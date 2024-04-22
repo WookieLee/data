@@ -5,6 +5,8 @@ from IPython.display import display, clear_output
 import requests
 from io import StringIO
 
+file_name_to_number = {}
+
 def download_fiscal_data():    
     import pandas as pd
     import requests
@@ -66,7 +68,6 @@ def download_fiscal_data():
     print('Download complete.')
    
 def fiscal_data_widget():
-    from download_fiscal_data import file_name_to_number
 
     # Dropdown for selecting dataframes
     df_dropdown = widgets.Dropdown(description='Dataframe:')
