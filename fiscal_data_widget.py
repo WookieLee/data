@@ -98,6 +98,14 @@ def fiscal_data_widget():
     # Predefined list of dataframe names
     dataframe_names = list(file_name_to_number.keys())
 
+    # Dictionary to store dataframes
+    uploaded_dataframes = {}
+
+    for data_name, number in file_name_to_number.items():
+        dataframe_name = 'dataframe_' + number
+        if dataframe_name in globals():  # Check if the dataframe variable exists
+            uploaded_dataframes[data_name] = globals()[dataframe_name]
+
     # Function to update dataframe dropdown options based on predefined list of dataframe names
     def update_dataframe_dropdown(change):
         options = {f'{idx + 1} - {df_name}': df_name for idx, df_name in enumerate(dataframe_names)}
@@ -183,14 +191,6 @@ def fiscal_data_widget():
     display(add_variable_button)
     display(import_button)
     display(output_widget)
-
-    # Dictionary to store dataframes
-    uploaded_dataframes = {}
-
-    for data_name, number in file_name_to_number.items():
-        dataframe_name = 'dataframe_' + number
-        if dataframe_name in globals():  # Check if the dataframe variable exists
-            uploaded_dataframes[data_name] = globals()[dataframe_name]
 
     # Update dropdown options
     update_dataframe_dropdown(None)
