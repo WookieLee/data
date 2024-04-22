@@ -64,8 +64,9 @@ def download_fiscal_data():
         else:
             print(f"Failed to fetch data for {data_name} from URL: {url}")
     print('Download complete.')
-
+   
 def fiscal_data_widget():
+    from download_fiscal_data import file_name_to_number
 
     # Dropdown for selecting dataframes
     df_dropdown = widgets.Dropdown(description='Dataframe:')
