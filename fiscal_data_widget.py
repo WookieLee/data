@@ -5,14 +5,8 @@ from IPython.display import display, clear_output
 import requests
 from io import StringIO
 
-file_name_to_number = {}
-
-def download_fiscal_data():    
-    import pandas as pd
-    import requests
-
-    # Dictionary to store data names and corresponding numbers
-    file_name_to_number = {
+# Dictionary to store data names and corresponding numbers
+file_name_to_number = {
         '중앙관서별총지출추이': '166',
         '정부구매예산': '173',
         '세입/수입 결산 현황': '174',
@@ -45,8 +39,12 @@ def download_fiscal_data():
         '예산편성현황(총수입)': '947',
         '예산편성현황(외화)': '948',
         '세입 예산편성현황(추경포함)': '949'
-    }
+}
 
+def download_fiscal_data():    
+    import pandas as pd
+    import requests
+    global file_name_to_number
     # Base URL for fetching CSV files
     base_url = "https://raw.githubusercontent.com/WookieLee/data/fiscal_data/df_{}.csv"
 
@@ -68,7 +66,7 @@ def download_fiscal_data():
     print('Download complete.')
    
 def fiscal_data_widget():
-
+    global file_name_to_number
     # Dropdown for selecting dataframes
     df_dropdown = widgets.Dropdown(description='Dataframe:')
 
