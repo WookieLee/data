@@ -5,7 +5,7 @@ from IPython.display import display, clear_output
 import requests
 from io import StringIO
 
-def download_fiscal_data():    
+def download_data():    
     import pandas as pd
     import requests
 
@@ -64,7 +64,7 @@ def download_fiscal_data():
             print(f"Failed to fetch data for {data_name} from URL: {url}")
     print('Download complete.')
    
-def fiscal_data_widget():
+def data_widget():
     # Dictionary to store data names and corresponding numbers
     file_name_to_number = {
         '중앙관서별총지출추이': '166',
